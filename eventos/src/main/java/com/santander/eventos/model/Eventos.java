@@ -1,5 +1,6 @@
 package com.santander.eventos.model;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -19,8 +20,6 @@ public class Eventos {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idEvento;
 	
-	@NotNull
-	private Date data;
 	
 	@NotNull
 	@Size(min =2, max = 100)
@@ -30,10 +29,32 @@ public class Eventos {
 	private String descricao;
 	
 	@NotNull
-	@Size(min=2, max=80)
-	private Usuario organizador;
+	private LocalDateTime inicioEvento;
 	
-	private List convidados;
+	@NotNull
+	private LocalDateTime fimEvento;
+	
+
+	@NotNull
+	@Size(min=2, max=80)
+	private String organizador;
+	
+	//private List convidados;
+	
+	
+	public Eventos(Long idEvento, String titulo, String descricao, LocalDateTime inicioEvento, LocalDateTime fimEvento) {
+		super();
+		this.idEvento = idEvento;
+		this.titulo = titulo;
+		this.descricao = descricao;
+		this.inicioEvento = inicioEvento;
+		this.fimEvento = fimEvento;
+	}
+	
+	public Eventos() {
+		super();
+	}
+	
 	
 	//Getters and Setters
 	public Long getIdEvento() {
@@ -42,14 +63,6 @@ public class Eventos {
 
 	public void setIdEvento(Long idEvento) {
 		this.idEvento = idEvento;
-	}
-	
-	public Date getData() {
-		return data;
-	}
-
-	public void setData(Date data) {
-		this.data = data;
 	}
 
 	public String getTitulo() {
@@ -68,20 +81,36 @@ public class Eventos {
 		this.descricao = descricao;
 	}
 
-	public Usuario getOrganizador() {
+	public String getOrganizador() {
 		return organizador;
 	}
 
-	public void setOrganizador(Usuario organizador) {
+	public void setOrganizador(String organizador) {
 		this.organizador = organizador;
 	}
 
-	public List getConvidados() {
-		return convidados;
+	//public List getConvidados() {
+		//return convidados;
+	//}
+
+	//public void setConvidados(List convidados) {
+		//this.convidados = convidados;
+	//}
+	
+	public LocalDateTime getInicioEvento() {
+		return inicioEvento;
 	}
 
-	public void setConvidados(List convidados) {
-		this.convidados = convidados;
+	public void setInicioEvento(LocalDateTime inicioEvento) {
+		this.inicioEvento = inicioEvento;
+	}
+
+	public LocalDateTime getFimEvento() {
+		return fimEvento;
+	}
+
+	public void setFimEvento(LocalDateTime fimEvento) {
+		this.fimEvento = fimEvento;
 	}
 	
 	
